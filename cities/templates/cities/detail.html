@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ city.name }}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        footer {
+            text-align: center;
+        }
+
+        article {
+            margin-bottom: 1.5rem;
+        }
+
+        article:hover {
+            transform: scale(1.01);
+            transition: 0.2s;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main class="container">
+
+        <nav>
+            <ul>
+                <li><h1>🏙️ Czechia cities</h1></li>
+            </ul>
+            <ul>
+                <li><a href="/">← Back</a></li>
+            </ul>
+        </nav>
+
+        <article>
+            <header>
+                <h1>{{ city.name }}</h1>
+                <p><em>{{ city.region }}</em></p>
+            </header>
+
+            {% if city.image_url %}
+                <img src="{{ city.image_url }}" alt="{{ city.name }}" 
+                     style="border-radius:10px; margin-bottom:1rem; width:100%; max-height:400px; object-fit:cover;">
+            {% endif %}
+
+            <p><strong>Population:</strong> {{ city.population }}</p>
+
+            <hr>
+
+            <p>{{ city.description }}</p>
+        </article>
+
+    </main>
+
+    <footer class="container">
+        <hr>
+        <small>
+            © 2026 Petr Novotný · Created with Django · All rights reserved
+        </small>
+    </footer>
+
+</body>
+
+</html>
